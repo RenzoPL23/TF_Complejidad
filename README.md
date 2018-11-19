@@ -20,7 +20,16 @@ Algoritmo 1:
 
 El algoritmo consiste en tomar 2 de las de los nodos que esten lo mas lejos posible, y estableciendo uno como inicial. Luego utilizando BellmanFord se encuentra la ruta mas efectiva del nodo inicial hasta su nodo mas lejano. Una vez trasada esta ruta se usa un algoritmo greedy partiendo del nodo mas alejado del inicial antes establecido, este va escogiendo su siguiente coneccion que este lo mas cerca al nodo antes especificado hasta que encuentre el nodo inicial. En caso que el algoritmo greddy encuentre una situacion en la que no puede continuar porque sus conecciones han sido todas ya visitadas este usara backtracking para encontrar otra ruta posible.  
 Algoritmo 2:  
-Algoritmo 3:
+- Prim: El algoritmo incrementa continuamente el tamaño de un árbol, comenzando por un vértice inicial al que se le van agregando sucesivamente vértices cuya distancia a los anteriores es mínima. Esto significa que en cada paso, las aristas a considerar son aquellas que inciden en vértices que ya pertenecen al árbol.  
+El árbol recubridor mínimo está completamente construido cuando no quedan más vértices por agregar.  
+El algoritmo podría ser informalmente descrito siguiendo los siguientes pasos:
+- Inicializar un árbol con un único vértice, elegido arbitrariamente del grafo.
+- Aumentar el árbol por un lado. Llamamos lado a la unión entre dos vértices: de las posibles uniones que pueden conectar el árbol a los vértices que no están aún en el árbol, encontrar el lado de menor distancia y unirlo al árbol.
+- Repetir el paso 2 (hasta que todos los vértices pertenezcan al árbol)
+
+Algoritmo 3:  
+- Held–Karp:
+Calcula las soluciones de todos los subproblemas comenzando con los más pequeños. Siempre que la computación de una solución requiera soluciones para problemas más pequeños utilizando las ecuaciones recursivas anteriores, busque estas soluciones que ya están computadas. Para calcular un recorrido de distancia mínima, use la ecuación final para generar el primer nodo y repita para los otros nodos. Para este problema, no podemos saber qué subproblemas necesitamos resolver, por lo que los resolvemos todos.
 #### Tiempo asintótico
 Algoritmo 1:  
 BellmanFord:  
@@ -35,7 +44,11 @@ Por lo tanto el algoritmo creado tendra un tiempo maximo de:
 T(n)=(n x n)+(n x n)
 
 Algoritmo 2:  
+Prim:
+- T(n) ∈ Θ(n^2)  
 Algoritmo 3:
+- Para cualquier vértice s, la duración del recorrido óptimo del vendedor viajero es L (s, V ∖ {s}, s). Debido a que el primer parámetro s es constante en todas las llamadas recursivas, hay Θ ((2^n)*n) subproblemas diferentes, y cada subproblema depende de un máximo de n otros. Por lo tanto, el algoritmo de programación dinámica se ejecuta en tiempo O ((2^n)*(n^2)).
+
 #### Conclusiones 
 Utilizar Bellmand Ford es una opcion factible para para encontrar una ruta entre x a y, sin embargo como no se tienen rutas negativas entonces no es necesario y un algoritmo como UCS puede ser mucho mas eficiente en cuanto al tiempo asindotico.
 Hay algortmos que pueden servir para crear algoritmos que encuentren una buena solucion, como algoritmos que encuentran rutas mas cortas, programacion dinamica para reducir el tiempo, algoritmos greedy dependiendo como sean los datos, sin embargo no se tiene un algoritmo que por si solo pueda dar una solucion, siempre tiene que cambiarse varias partes del mismo o fucionarlos. Ademas los tiempos son muy grandes y no encuentran la mejor solucion solo una buena solucion.
